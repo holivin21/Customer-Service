@@ -66,7 +66,7 @@ export default function TabChat() {
 const ListBubbleChat = (props: { listData: IMasterCase[] | undefined, onRender: (index: number) => JSX.Element }) => {
     return (
         <AutoSizer>
-            {({ width, height }) => (
+            {({ width, height }: any) => (
                 <Virtuoso
                     style={{ height: height, width: width }}
                     totalCount={props.listData?.length}

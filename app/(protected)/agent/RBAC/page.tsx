@@ -143,14 +143,14 @@ export default function Page() {
         <>
             <Button onClick={() => fetchUser()}>refresh</Button>
             <List>
-                <DataGrid
+                {/* <DataGrid
                     onRowModesModelChange={handleRowModesModelChange}
                     rowModesModel={rowModesModel}
                     editMode="row"
                     rows={listUser?.users.map((v: IUser) => { return Object.assign(v, { ...v.user_metadata }) }) ?? []}
                     columns={columns}
                     autoHeight
-                />
+                /> */}
             </List>
         </>
     );

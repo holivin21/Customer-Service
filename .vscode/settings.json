@@ -1,0 +1,19 @@
+{
+    "sqltools.connections": [
+        {
+            "mssqlOptions": {
+                "appName": "SQLTools",
+                "useUTC": true,
+                "encrypt": true
+            },
+            "previewLimit": 50,
+            "server": "ssg-oldbinusmaya.binus.db",
+            "port": 1433,
+            "driver": "MSSQL",
+            "name": "Binusmaya",
+            "username": "SalesForce",
+            "password": "!D3w4Sal3sF0rc3",
+            "database": "master"
+        }
+    ]
+}

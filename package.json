@@ -9,33 +9,56 @@
     "lint": "eslint '**/*.{js,jsx,ts,tsx}'",
     "refine": "refine"
   },
+  "eslintConfig": {
+    "extends": "eslint:recommended"
+  },
   "dependencies": {
-    "@refinedev/cli": "^2.5.1",
-    "@refinedev/core": "^4.5.8",
-    "@refinedev/nextjs-router": "^5.1.4",
-    "@refinedev/inferencer": "^4.0.0",
-    "@refinedev/kbar": "^1.1.0",
-    "next": "^13.0.6",
-    "nookies": "^2.5.2",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "@refinedev/supabase": "^5.0.0",
-    "@refinedev/mui": "^5.0.0",
-    "@refinedev/react-hook-form": "^4.1.2",
-    "@mui/icons-material": "^5.8.3",
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
+    "@mui/icons-material": "^5.8.3",
     "@mui/lab": "^5.0.0-alpha.85",
     "@mui/material": "^5.8.6",
     "@mui/x-data-grid": "^6.6.0",
-    "next-i18next": "^8.9.0"
+    "@refinedev/cli": "^2.7.2",
+    "@refinedev/core": "^4.26.2",
+    "@refinedev/inferencer": "^4.3.0",
+    "@refinedev/kbar": "^1.1.0",
+    "@refinedev/mui": "^5.7.0",
+    "@refinedev/nextjs-router": "^5.1.4",
+    "@refinedev/react-hook-form": "^4.1.2",
+    "@refinedev/supabase": "^5.0.0",
+    "@types/uuid": "^9.0.2",
+    "casbin": "^5.26.1",
+    "encoding": "^0.1.13",
+    "next": "^13.0.6",
+    "next-i18next": "^8.9.0",
+    "nookies": "^2.5.2",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-virtualized-auto-sizer": "^1.0.20",
+    "react-virtuoso": "^4.3.11",
+    "react-window": "^1.8.9",
+    "uuid": "^9.0.0",
+    "zustand": "^4.3.8"
   },
   "devDependencies": {
+    "@types/node": "^12.20.11",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
-    "@types/node": "^12.20.11",
+    "@types/react-window": "^1.8.5",
+    "@typescript-eslint/eslint-plugin": "^5.60.1",
     "@typescript-eslint/parser": "5.48.0",
-    "typescript": "^4.7.4",
-    "cross-env": "^7.0.3"
+    "cross-env": "^7.0.3",
+    "eslint": "^8.44.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "typescript": "^4.7.4"
+  },
+  "browser": {
+    "fs": false,
+    "os": false,
+    "path": false
   }
 }

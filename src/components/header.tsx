@@ -19,7 +19,7 @@ import AppLogo from "./appLogo";
 
 
 const Header = ({ sticky = true, sideMenu = true }) => {
-  // const { mode, setMode } = useContext(ColorModeContext);
+  const { mode, setMode } = useContext(ColorModeContext);
   const { data: user } = useGetIdentity<IUser>();
   const RightAction = () => {
     if (user) return <ProfileAvatar user={user} />
@@ -38,9 +38,9 @@ const Header = ({ sticky = true, sideMenu = true }) => {
             alignItems="center"
             gap="16px"
           >
-            {/* <IconButton color="inherit" onClick={() => { setMode(); }}>
+            <IconButton color="inherit" onClick={() => { setMode(); }}>
               {mode === "dark" ? <LightModeOutlined /> : <DarkModeOutlined />}
-            </IconButton> */}
+            </IconButton>
             {user ? <Typography>{user?.role}</Typography> : <></>}
             <RightAction />
           </Stack>

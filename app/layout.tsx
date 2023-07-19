@@ -19,15 +19,16 @@ import accessControl from "src/utility/accessControl";
 import DashboardIcon from '@mui/icons-material/Dashboard';
 export default function RootLayout({ children, }: { children: React.ReactNode; }) {
     return (
-        <ThemeProvider theme={RefineThemes.Blue}>
-            <CssBaseline />
-            <GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />
-            <RefineKbarProvider>
-                <ColorModeContextProvider>
+        <ColorModeContextProvider >
+            <ThemeProvider theme={RefineThemes.Blue}>
+                <CssBaseline />
+                <GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />
+                <RefineKbarProvider>
                     <html lang="en">
                         <body>
                             <RefineSnackbarProvider>
                                 <Refine
+
                                     routerProvider={routerProvider}
                                     liveProvider={liveProvider(supabaseClientPublic)}
                                     dataProvider={{
@@ -97,8 +98,8 @@ export default function RootLayout({ children, }: { children: React.ReactNode; }
                             </RefineSnackbarProvider>
                         </body>
                     </html>
-                </ColorModeContextProvider>
-            </RefineKbarProvider>
-        </ThemeProvider>
+                </RefineKbarProvider>
+            </ThemeProvider >
+        </ColorModeContextProvider>
     );
 }

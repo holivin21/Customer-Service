@@ -88,53 +88,53 @@ export default function Page() {
                 flex: 1,
                 editable: true,
             },
-            {
-                field: 'actions',
-                type: 'actions',
-                headerName: "Action",
-                width: 80,
-                getActions: ({ id }) => {
-                    console.log(rowModesModel[id]?.mode)
-                    console.log(rowModesModel[id]?.mode === GridRowModes.Edit)
-                    const isInEditMode = rowModesModel[id]?.mode === GridRowModes.Edit;
+            // {
+            //     field: 'actions',
+            //     type: 'actions',
+            //     headerName: "Action",
+            //     width: 80,
+            //     getActions: ({ id }) => {
+            //         console.log(rowModesModel[id]?.mode)
+            //         console.log(rowModesModel[id]?.mode === GridRowModes.Edit)
+            //         const isInEditMode = rowModesModel[id]?.mode === GridRowModes.Edit;
 
-                    if (isInEditMode) {
-                        return [
-                            <GridActionsCellItem
-                                icon={<SaveIcon />}
-                                label="Save"
-                                sx={{
-                                    color: 'primary.main',
-                                }}
-                                onClick={handleSaveClick(id)}
-                            />,
-                            <GridActionsCellItem
-                                icon={<CancelIcon />}
-                                label="Cancel"
-                                className="textPrimary"
-                                onClick={handleCancelClick(id)}
-                                color="inherit"
-                            />,
-                        ];
-                    }
+            //         if (isInEditMode) {
+            //             return [
+            //                 <GridActionsCellItem
+            //                     icon={<SaveIcon />}
+            //                     label="Save"
+            //                     sx={{
+            //                         color: 'primary.main',
+            //                     }}
+            //                     onClick={handleSaveClick(id)}
+            //                 />,
+            //                 <GridActionsCellItem
+            //                     icon={<CancelIcon />}
+            //                     label="Cancel"
+            //                     className="textPrimary"
+            //                     onClick={handleCancelClick(id)}
+            //                     color="inherit"
+            //                 />,
+            //             ];
+            //         }
 
-                    return [
-                        <GridActionsCellItem
-                            icon={<EditIcon />}
-                            label="Edit"
-                            className="textPrimary"
-                            onClick={handleEditClick(id)}
-                            color="inherit"
-                        />,
-                        <GridActionsCellItem
-                            icon={<DeleteIcon />}
-                            label="Delete"
-                            onClick={handleDeleteClick(id)}
-                            color="inherit"
-                        />,
-                    ];
-                },
-            },
+            //         return [
+            //             <GridActionsCellItem
+            //                 icon={<EditIcon />}
+            //                 label="Edit"
+            //                 className="textPrimary"
+            //                 onClick={handleEditClick(id)}
+            //                 color="inherit"
+            //             />,
+            //             <GridActionsCellItem
+            //                 icon={<DeleteIcon />}
+            //                 label="Delete"
+            //                 onClick={handleDeleteClick(id)}
+            //                 color="inherit"
+            //             />,
+            //         ];
+            //     },
+            // },
         ],
         [],
     );

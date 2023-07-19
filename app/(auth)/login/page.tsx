@@ -36,8 +36,8 @@ export default function Login() {
                 }}
                 formProps={{
                     defaultValues: {
-                        email: "agent@supabase.com",
-                        password: "agent123"
+                        email: "customer@supabase.com",
+                        password: "customer123"
                     }
                 }}
                 providers={[

@@ -89,6 +89,7 @@ export default function Page() {
                     if (item.row.status === MasterCaseStatus.Close) {
                         return [
                             <GridActionsCellItem
+                                key={item.row.id}
                                 icon={<HistoryIcon />}
                                 label="history"
                                 onClick={() => {
@@ -101,13 +102,13 @@ export default function Page() {
                         ]
                     } else if (item.row.status === MasterCaseStatus.Reject) {
                         return [
-                            <Tooltip title={item.row.agent_message} arrow placement="left">
+                            <Tooltip title={item.row.agent_message} arrow placement="left" key={item.row.id}>
                                 <IconButton aria-label="reject" ><DangerousIcon /></IconButton>
                             </Tooltip>
                         ]
                     } else if (item.row.status === MasterCaseStatus.Progress) {
                         return [
-                            <IconButton aria-label="chat" onClick={() => { show(MasterRouteName.CustomerChat, item.row.id) }}>
+                            <IconButton key={item.row.id} aria-label="chat" onClick={() => { show(MasterRouteName.CustomerChat, item.row.id) }}>
                                 <ChatIcon />
                             </IconButton>
                         ]
@@ -115,6 +116,7 @@ export default function Page() {
                     else {
                         return [
                             <GridActionsCellItem
+                                key={item.row.id}
                                 icon={<VisibilityIcon />}
                                 label="chat"
                                 className="textPrimary"

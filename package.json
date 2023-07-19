@@ -41,6 +41,7 @@
     "react-virtualized-auto-sizer": "^1.0.20",
     "react-virtuoso": "^4.3.11",
     "react-window": "^1.8.9",
+    "sharp": "^0.32.3",
     "uuid": "^9.0.0",
     "zustand": "^4.3.8"
   },

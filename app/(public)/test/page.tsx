@@ -13,7 +13,7 @@ export default function Page() {
     const { dataGridProps } = useDataGrid<IMasterCase>(
         {
             resource: "MasterCase",
-            liveMode:"auto",
+            liveMode: "auto",
             filters: {
                 permanent: [
                     {
@@ -34,13 +34,13 @@ export default function Page() {
         }
     );
 
-    const { data: masterCaseData, isLoading: masterCaseIsLoading } = useMany<IMasterCase>({
-        resource: "MasterCase",
-        ids: dataGridProps?.rows?.map((item: IMasterCase) => item?.id) ?? [],
-        queryOptions: {
-            enabled: !!dataGridProps?.rows,
-        },
-    });
+    // const { data: masterCaseData, isLoading: masterCaseIsLoading } = useMany<IMasterCase>({
+    //     resource: "MasterCase",
+    //     ids: dataGridProps?.rows?.map((item: IMasterCase) => item?.id) ?? [],
+    //     queryOptions: {
+    //         enabled: !!dataGridProps?.rows,
+    //     },
+    // });
 
     const columns = React.useMemo<GridColDef<IMasterCase>[]>(
         () => [
@@ -70,7 +70,7 @@ export default function Page() {
             },
         ],
         // eslint-disable-next-line react-hooks/exhaustive-deps
-        [masterCaseData?.data],
+        [dataGridProps?.rows],
     );
 
     return (

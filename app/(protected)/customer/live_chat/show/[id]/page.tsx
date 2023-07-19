@@ -70,7 +70,7 @@ export default function Page({ params }: { params: { id: string } }) {
                             src={ChatQueueImage}
                             alt="ChatQueueImage"
                             priority={false}
-                            style={{ width: "100%", height: "100%" }}
+                            style={{ width: "90%", height: "90%" }}
                         />
                     </Grid>
                     <Grid display="flex" flexDirection="column" gap={1} item xs={4} justifyContent="center" alignItems="center" bgcolor={blue[50]} borderRadius={10}>

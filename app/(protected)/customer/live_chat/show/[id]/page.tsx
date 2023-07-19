@@ -40,7 +40,7 @@ export default function Page({ params }: { params: { id: string } }) {
     }, [count]);
     useEffect(() => {
         console.log(data?.data)
-        if (!data?.data) go({ to: "/customer/live_chat/chat/show/" + params.id })
+        if (data?.data === undefined || data?.data === null) go({ to: "/customer/live_chat/chat/show/" + params.id })
     }, [data]);
     return (
         <>

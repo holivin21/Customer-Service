@@ -40,13 +40,13 @@ export default function Login() {
                         password: "customer123"
                     }
                 }}
-                providers={[
-                    {
-                        name: "google",
-                        label: "Sign in with Google",
-                        icon: <GoogleIcon />,
-                    },
-                ]}
+                // providers={[
+                //     {
+                //         name: "google",
+                //         label: "Sign in with Google",
+                //         icon: <GoogleIcon />,
+                //     },
+                // ]}
             />
         </>
     );

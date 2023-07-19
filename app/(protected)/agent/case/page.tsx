@@ -60,6 +60,7 @@ const Page = () => {
                 renderCell(params) { return formatDateTime(params.value); },
             },
         ],
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         [categoryData?.data],
     );
 

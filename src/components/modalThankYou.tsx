@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Box, Modal, Typography } from "@mui/material";
 import { useGo } from "@refinedev/core";
 import Image from "next/image";

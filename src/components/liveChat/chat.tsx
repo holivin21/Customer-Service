@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client"
 import { Avatar, Box, Button, Grid, Modal, Stack, TextField, TextareaAutosize, Typography } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";

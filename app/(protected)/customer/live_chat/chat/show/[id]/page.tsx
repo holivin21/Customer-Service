@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client"
 
 import Chat from "@components/liveChat/chat"
@@ -24,7 +25,7 @@ export default function Page({ params }: { params: { id: string } }) {
     });
     useEffect(() => {
         if (!isLoading && data?.data.status === MasterCaseStatus.Close) setModal(true)
-    }, [data]);
+    }, [data, isLoading]);
     return (
         <>
             <LayoutChat id={params.id} />

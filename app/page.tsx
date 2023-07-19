@@ -6,7 +6,7 @@ import { MasterRouteName } from "src/interfaces";
 
 export default function IndexPage() {
     return (
-        <Authenticated redirectOnFail="/login" appendCurrentPathToQuery={false}>
+        <Authenticated redirectOnFail="/home" appendCurrentPathToQuery={false}>
             <NavigateToResource resource={MasterRouteName.Home} />
         </Authenticated>
     );

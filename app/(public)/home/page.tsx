@@ -4,13 +4,16 @@ import CustomThemeLayout from "@components/customThemeLayout";
 import Header from "@components/header";
 import { Box, Button, Grid, Stack, Typography } from "@mui/material";
 import { blue, green, grey, indigo, lightBlue, purple, red, yellow } from "@mui/material/colors";
+import { useGetIdentity, useGo } from "@refinedev/core";
 import { ThemedLayoutV2 } from "@refinedev/mui";
 import Image from "next/image";
 import ChatSupportImage from "public/images/chat_support.svg";
+import { IUser } from "src/interfaces";
 
 
 export default function Page() {
-
+    const { data: user } = useGetIdentity<IUser>()
+    const go = useGo();
     return (
         <>
             <Grid container height="100%" spacing={2}>
@@ -21,7 +24,7 @@ export default function Page() {
                             <Typography variant="h6">
                                 Welcome to our Customer Support Service. Our dedicated team is here to assist you with any questions, concerns, or issues you may have. We pride ourselves on delivering prompt and reliable support to ensure your satisfaction.
                             </Typography>
-                            <Button>Register</Button>
+                            {!user ? <Button onClick={() => go({ to: "/register" })}>Register</Button> : <></>}
                         </Box>
                     </Grid>
                 </Grid>

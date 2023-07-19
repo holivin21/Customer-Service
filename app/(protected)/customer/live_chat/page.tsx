@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client"
 import { DataGrid, GridActionsCellItem, GridColDef } from "@mui/x-data-grid";
 import { useGetIdentity, useMany, useNavigation, useNotification } from "@refinedev/core";

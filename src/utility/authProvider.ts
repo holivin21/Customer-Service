@@ -25,7 +25,7 @@ export const authProvider = (): AuthBindings => {
         if (!users.error && users.data) {
           const result: IUserToken = data.session as unknown as IUserToken;
           result.user = users.data;
-          localStorage.setItem("auth-current-user", JSON.stringify(result ?? ""))
+          if (typeof window !== 'undefined') localStorage.setItem("auth-current-user", JSON.stringify(result ?? ""))
           nookies.set(null, "token", data.session.access_token, {
             maxAge: 30 * 24 * 60 * 60,
             path: "/",
@@ -50,7 +50,7 @@ export const authProvider = (): AuthBindings => {
     logout: async () => {
       console.log("logout");
       nookies.destroy(null, "token");
-      localStorage.removeItem("auth-current-user")
+      if (typeof window !== 'undefined') localStorage.removeItem("auth-current-user")
       const { error } = await supabaseClientPublic.auth.signOut();
 
       if (error) {
@@ -62,7 +62,7 @@ export const authProvider = (): AuthBindings => {
 
       return {
         success: true,
-        redirectTo: "/login",
+        redirectTo: "/home",
       };
     },
     register: async ({ email, password }) => {
@@ -100,10 +100,10 @@ export const authProvider = (): AuthBindings => {
           authenticated: true,
         };
       }
-
+      if (typeof window !== 'undefined') localStorage.removeItem("auth-current-user")
       return {
         authenticated: false,
-        redirectTo: "/login",
+        redirectTo: "/",
       };
     },
     getPermissions: async () => {
@@ -118,7 +118,8 @@ export const authProvider = (): AuthBindings => {
     },
     getIdentity: async () => {
       console.log("getIdentity");
-      const data = localStorage.getItem("auth-current-user")
+      let data;
+      if (typeof window !== 'undefined') data = localStorage.getItem("auth-current-user")
       // const data = await supabaseClientPublic.auth.getUser();
       if (data) {
         const auth: IUserToken = JSON.parse(data ?? "")

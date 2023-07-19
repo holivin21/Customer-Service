@@ -18,12 +18,13 @@ export enum MasterRouteName {
     AgentLiveChat = "agent-live-chat",
     AgentChat = "agent-chat",
     CustomerLiveChat = "customer-live-chat",
-    CustomerChat = "customer-chat"
+    CustomerChat = "customer-chat",
+    AgentDashboard = "dashboard-chat"
 }
 export interface IMasterCase {
     id: string
-    start_time: Date | null
-    end_time: string | null
+    start_time: Date
+    end_time: Date | null
     is_deleted: boolean
     status: MasterCaseStatus
     title: string | null

@@ -16,6 +16,7 @@ import { ColorModeContextProvider } from "@contexts/index";
 import { IUser, IUserToken, MasterRouteName } from "src/interfaces";
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import accessControl from "src/utility/accessControl";
+import DashboardIcon from '@mui/icons-material/Dashboard';
 export default function RootLayout({ children, }: { children: React.ReactNode; }) {
     return (
         <ThemeProvider theme={RefineThemes.Blue}>
@@ -40,20 +41,30 @@ export default function RootLayout({ children, }: { children: React.ReactNode; }
                                             name: MasterRouteName.Home,
                                             list: "/home",
                                             meta: { hide: true }
-                                        }, {
+                                        },
+                                        {
+                                            name: MasterRouteName.AgentDashboard,
+                                            list: "/agent/dashboard",
+                                            meta: {
+                                                label: "Dashboard",
+                                                icon: <DashboardIcon />
+                                            }
+                                        },
+                                        {
                                             name: MasterRouteName.AgentLiveChat,
                                             list: "/agent/live_chat",
                                             meta: {
                                                 label: "Live Chat",
                                                 icon: <ChatBubbleIcon />
                                             }
-                                        }, {
+                                        },
+                                        {
                                             name: MasterRouteName.AgentChat,
                                             show: "/agent/live_chat/chat/:id",
-                                            meta:{
-                                                parent:MasterRouteName.AgentLiveChat
+                                            meta: {
+                                                parent: MasterRouteName.AgentLiveChat
                                             }
-                                        }, 
+                                        },
                                         {
                                             name: MasterRouteName.CustomerLiveChat,
                                             show: "/customer/live_chat/show/:id",
@@ -63,7 +74,8 @@ export default function RootLayout({ children, }: { children: React.ReactNode; }
                                                 label: "Live Chat",
                                                 icon: <ChatBubbleIcon />
                                             }
-                                        }, {
+                                        },
+                                        {
                                             name: MasterRouteName.CustomerChat,
                                             show: "/customer/live_chat/chat/show/:id",
                                             meta: {

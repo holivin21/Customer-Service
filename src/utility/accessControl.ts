@@ -46,6 +46,7 @@ export const adapter = new StringAdapter(`
 p, AGENT, home,(list)|(show)|(create)
 p, AGENT, agent-live-chat,(list)|(show)|(create)
 p, AGENT, agent-chat,(show)
+p, AGENT, dashboard-chat,(list)
 
 p, CUSTOMER, home,(list)|(show)|(create)
 p, CUSTOMER, customer-live-chat,(list)|(show)|(create)

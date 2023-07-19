@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client"
 
 import { Button, List } from "@mui/material";
@@ -141,17 +142,17 @@ export default function Page() {
 
     return (
         <>
-            <Button onClick={() => fetchUser()}>refresh</Button>
+            {/* <Button onClick={() => fetchUser()}>refresh</Button>
             <List>
-                {/* <DataGrid
+                <DataGrid
                     onRowModesModelChange={handleRowModesModelChange}
                     rowModesModel={rowModesModel}
                     editMode="row"
                     rows={listUser?.users.map((v: IUser) => { return Object.assign(v, { ...v.user_metadata }) }) ?? []}
                     columns={columns}
                     autoHeight
-                /> */}
-            </List>
+                />
+            </List> */}
         </>
     );
 }

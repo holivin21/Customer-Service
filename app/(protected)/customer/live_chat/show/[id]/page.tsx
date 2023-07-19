@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 import { Grid, Typography } from "@mui/material";
 import { HttpError, useGetIdentity, useGo, useInvalidate, useNavigation, useOne, useUpdate } from "@refinedev/core";

@@ -8,6 +8,11 @@ import React, { Suspense } from "react";
 import { authProvider } from "@providers/auth-provider";
 import { dataProvider } from "@providers/data-provider";
 import "@styles/global.css";
+import { ChakraProvider } from "@chakra-ui/react";
+import { RefineThemes } from "@refinedev/chakra-ui";
+import { ThemeProvider } from "@providers/theme-provider";
+import { UnsavedChangesNotifier } from "@refinedev/nextjs-router/pages";
+
 
 export const metadata: Metadata = {
   title: "Refine",
@@ -26,7 +31,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Suspense>
-          <GitHubBanner />
+          <ThemeProvider>
           <RefineKbarProvider>
             <DevtoolsProvider>
               <Refine
@@ -34,6 +39,10 @@ export default function RootLayout({
                 authProvider={authProvider}
                 dataProvider={dataProvider}
                 resources={[
+                  {
+                    name:"cases",
+                    list:"/cases",
+                  },
                   {
                     name: "blog_posts",
                     list: "/blog-posts",
@@ -67,6 +76,8 @@ export default function RootLayout({
               </Refine>
             </DevtoolsProvider>
           </RefineKbarProvider>
+            
+          </ThemeProvider>
         </Suspense>
       </body>
     </html>

@@ -1,5 +1,6 @@
-import { AuthPage } from "@components/auth-page";
+
 import { authProviderServer } from "@providers/auth-provider";
+import { AuthPage } from "@refinedev/chakra-ui";
 import { redirect } from "next/navigation";
 
 export default async function Login() {

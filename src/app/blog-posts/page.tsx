@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "@chakra-ui/react";
 import { GetManyResponse, useMany, useNavigation } from "@refinedev/core";
 import { useTable } from "@refinedev/react-table";
 import { ColumnDef, flexRender } from "@tanstack/react-table";
@@ -148,6 +149,7 @@ export default function BlogPostList() {
         }}
       >
         <h1>{"List"}</h1>
+        <Button>hello</Button>
         <button onClick={() => create("blog_posts")}>{"Create"}</button>
       </div>
       <div style={{ maxWidth: "100%", overflowY: "scroll" }}>

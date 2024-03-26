@@ -1,69 +1,44 @@
 {
-  "name": "Customer-Service",
+  "name": "customer-service",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "dev": "cross-env NODE_OPTIONS=--max_old_space_size=4096 refine dev",
-    "build": "tsc && refine build",
+    "build": "refine build",
     "start": "refine start",
     "lint": "eslint '**/*.{js,jsx,ts,tsx}'",
     "refine": "refine"
   },
-  "eslintConfig": {
-    "extends": "eslint:recommended"
-  },
   "dependencies": {
-    "@emotion/react": "^11.8.2",
-    "@emotion/styled": "^11.8.1",
-    "@mui/icons-material": "^5.8.3",
-    "@mui/lab": "^5.0.0-alpha.85",
-    "@mui/material": "^5.8.6",
-    "@mui/x-data-grid": "^6.6.0",
-    "@refinedev/cli": "^2.7.2",
-    "@refinedev/core": "^4.26.2",
-    "@refinedev/inferencer": "^4.3.0",
-    "@refinedev/kbar": "^1.1.0",
-    "@refinedev/mui": "^5.7.0",
-    "@refinedev/nextjs-router": "^5.1.4",
-    "@refinedev/react-hook-form": "^4.1.2",
-    "@refinedev/supabase": "^5.0.0",
-    "@types/uuid": "^9.0.2",
-    "apexcharts": "^3.41.0",
-    "casbin": "^5.26.1",
-    "encoding": "^0.1.13",
-    "eslint-config-next": "^13.4.10",
-    "next": "^13.0.6",
-    "next-i18next": "^8.9.0",
-    "nookies": "^2.5.2",
+    "@refinedev/cli": "^2.16.21",
+    "@refinedev/core": "^4.47.1",
+    "@refinedev/devtools": "^1.1.32",
+    "@refinedev/nextjs-router": "^6.0.0",
+    "@refinedev/kbar": "^1.3.6",
+    "next": "14.1.0",
     "react": "^18.0.0",
-    "react-apexcharts": "^1.4.1",
     "react-dom": "^18.0.0",
-    "react-virtualized-auto-sizer": "^1.0.20",
-    "react-virtuoso": "^4.3.11",
-    "react-window": "^1.8.9",
-    "sharp": "^0.32.3",
-    "uuid": "^9.0.0",
-    "zustand": "^4.3.8"
+    "@refinedev/supabase": "^5.7.4",
+    "js-cookie": "^3.0.5",
+    "@refinedev/react-hook-form": "^4.8.14",
+    "@refinedev/react-table": "^5.6.6",
+    "@tanstack/react-table": "^8.2.6"
   },
   "devDependencies": {
-    "@next/eslint-plugin-next": "^13.4.10",
-    "@types/node": "^12.20.11",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
-    "@types/react-window": "^1.8.5",
-    "@typescript-eslint/eslint-plugin": "^5.60.1",
+    "@types/node": "^18.0.0",
     "@typescript-eslint/parser": "5.48.0",
+    "typescript": "^4.7.4",
     "cross-env": "^7.0.3",
-    "eslint": "^8.44.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-react": "^7.32.2",
-    "eslint-plugin-unused-imports": "^2.0.0",
-    "typescript": "^4.7.4"
+    "eslint": "^8",
+    "eslint-config-next": "14.1.0",
+    "@types/js-cookie": "^3.0.6"
   },
-  "browser": {
-    "fs": false,
-    "os": false,
-    "path": false
+  "refine": {
+    "projectId": "OD5teY-1VYmVv-o31ZkY"
   }
 }

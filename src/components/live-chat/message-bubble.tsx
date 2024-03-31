@@ -1,23 +1,23 @@
 "use client"
-import { Box, HStack, Text } from "@chakra-ui/react";
+import { Box, Flex, HStack, Text, useColorModeValue } from "@chakra-ui/react";
 import { useGetIdentity } from "@refinedev/core";
 import { IDialog, IUser } from "@utility/interface";
+import moment from "moment";
 
 const MessageBubble = (props: { data: IDialog }) => {
-    
+
     const { data: user } = useGetIdentity<IUser>();
     const isMe = props.data.user_id === user?.id;
+    const bgChat = useColorModeValue('blue.100', 'blue.600')
     return (
         <Box display="flex" alignItems={!isMe ? "flex-start" : "flex-end"} flexDirection="column" px={2} py={1} >
-            <HStack direction="row" spacing={1}>
-                <Text >{props.data.updated_at.toString()}</Text>
-                <Text >{props.data.Users.full_name ?? props.data.Users.email}</Text>
-            </HStack>
-            <Box sx={{ display: "flex", justifyContent: !isMe ? "flex-start" : "flex-end", }} >
-                <Box                 >
-                    <Text variant="body1">{props.data.message}</Text>
+            <Text fontSize='xs'>{props.data.Users?.full_name ?? props.data.Users?.email}</Text>
+            <Flex flexDir={isMe?"row":"row-reverse"}>
+                <Text fontSize='xs'>{moment(props.data.updated_at).format('HH:mm')}</Text>
+                <Box bgColor={bgChat} py={1} px={2} borderRadius={12}>
+                    <Text>{props.data.message}</Text>
                 </Box>
-            </Box>
+            </Flex>
         </Box>
     );
 };

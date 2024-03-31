@@ -100,7 +100,7 @@ export const authProvider: AuthBindings = {
         authenticated: true,
       };
     }
-
+    Cookies.remove("token", { path: "/" });
     return {
       authenticated: false,
       redirectTo: "/login",

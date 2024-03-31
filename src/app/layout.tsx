@@ -1,5 +1,5 @@
 import { DevtoolsProvider } from "@providers/devtools";
-import { GitHubBanner, Refine } from "@refinedev/core";
+import { Refine } from "@refinedev/core";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 import routerProvider from "@refinedev/nextjs-router";
 import { Metadata } from "next";
@@ -7,11 +7,8 @@ import React, { Suspense } from "react";
 
 import { authProvider } from "@providers/auth-provider";
 import { dataProvider } from "@providers/data-provider";
-import "@styles/global.css";
-import { ChakraProvider } from "@chakra-ui/react";
-import { RefineThemes } from "@refinedev/chakra-ui";
 import { ThemeProvider } from "@providers/theme-provider";
-import { UnsavedChangesNotifier } from "@refinedev/nextjs-router/pages";
+import { MasterRouteName } from "@utility/interface";
 
 
 export const metadata: Metadata = {
@@ -32,51 +29,59 @@ export default function RootLayout({
       <body>
         <Suspense>
           <ThemeProvider>
-          <RefineKbarProvider>
-            <DevtoolsProvider>
-              <Refine
-                routerProvider={routerProvider}
-                authProvider={authProvider}
-                dataProvider={dataProvider}
-                resources={[
-                  {
-                    name:"cases",
-                    list:"/cases",
-                  },
-                  {
-                    name: "blog_posts",
-                    list: "/blog-posts",
-                    create: "/blog-posts/create",
-                    edit: "/blog-posts/edit/:id",
-                    show: "/blog-posts/show/:id",
-                    meta: {
-                      canDelete: true,
+            <RefineKbarProvider>
+              <DevtoolsProvider>
+                <Refine
+                  routerProvider={routerProvider}
+                  authProvider={authProvider}
+                  dataProvider={dataProvider}
+                  resources={[
+                    {
+                      name: MasterRouteName.Home,
+                      list: "/home",
+                      meta: { hide: true }
                     },
-                  },
-                  {
-                    name: "categories",
-                    list: "/categories",
-                    create: "/categories/create",
-                    edit: "/categories/edit/:id",
-                    show: "/categories/show/:id",
-                    meta: {
-                      canDelete: true,
+                    {
+                      name: "cases",
+                      list: "/cases",
+                      meta: {
+
+                      }
                     },
-                  },
-                ]}
-                options={{
-                  syncWithLocation: true,
-                  warnWhenUnsavedChanges: true,
-                  useNewQueryKeys: true,
-                  projectId: "OD5teY-1VYmVv-o31ZkY",
-                }}
-              >
-                {children}
-                <RefineKbar />
-              </Refine>
-            </DevtoolsProvider>
-          </RefineKbarProvider>
-            
+                    {
+                      name: "blog_posts",
+                      list: "/blog-posts",
+                      create: "/blog-posts/create",
+                      edit: "/blog-posts/edit/:id",
+                      show: "/blog-posts/show/:id",
+                      meta: {
+                        canDelete: true,
+                      },
+                    },
+                    {
+                      name: "categories",
+                      list: "/categories",
+                      create: "/categories/create",
+                      edit: "/categories/edit/:id",
+                      show: "/categories/show/:id",
+                      meta: {
+                        canDelete: true,
+                      },
+                    },
+                  ]}
+                  options={{
+                    syncWithLocation: true,
+                    warnWhenUnsavedChanges: true,
+                    useNewQueryKeys: true,
+                    projectId: "OD5teY-1VYmVv-o31ZkY",
+                  }}
+                >
+                  {children}
+                  <RefineKbar />
+                </Refine>
+              </DevtoolsProvider>
+            </RefineKbarProvider>
+
           </ThemeProvider>
         </Suspense>
       </body>

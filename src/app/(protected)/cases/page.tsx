@@ -3,62 +3,20 @@
 import { ChatIcon, TimeIcon, ViewIcon, WarningTwoIcon } from "@chakra-ui/icons";
 import { Box, Button, HStack, IconButton, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tooltip, Tr, useDisclosure } from "@chakra-ui/react";
 import Chat from "@components/live-chat/chat";
-import { useNavigation } from "@refinedev/core";
+import { useGetIdentity, useNavigation } from "@refinedev/core";
 import { useTable } from "@refinedev/react-table";
 import { ColumnDef, flexRender } from "@tanstack/react-table";
 import { IMasterCase, IUser, MasterCaseStatus, MasterRouteName } from "@utility/interface";
 import React, { useRef } from "react";
-import { VirtuosoHandle } from "react-virtuoso";
+
+
 export default function Page() {
     const { show, create } = useNavigation();
-    // const { data: user } = useGetIdentity<IUser>();
-    // const { open, close } = useNotification();
     const { isOpen, onOpen, onClose } = useDisclosure();
-    // const [modal, setModal] = React.useState(false);
     const [modalID, setModalID] = React.useState("");
-    // const { dataGridProps } = useDataGrid<IMasterCase>({
-    //     resource: "MasterCase",
-    //     liveMode: "auto",
-    //     filters: {
-    //         permanent: [
-    //             {
-    //                 field: "is_deleted",
-    //                 operator: "eq",
-    //                 value: false
-    //             },
-    //             {
-    //                 field: "customer_id",
-    //                 operator: "eq",
-    //                 value: user?.id
-    //             }
-    //         ]
-    //     },
-    //     sorters: {
-    //         initial: [
-    //             {
-    //                 field: "status",
-    //                 order: "desc"
-    //             }
-    //         ]
-    //     }
-    // }
-    // );
-
-    // const { data: masterCaseData, isLoading: masterCaseIsLoading } = useMany<IMasterCase>({
-    //     resource: "MasterCase",
-    //     ids: dataGridProps?.rows?.map((item: IMasterCase) => item?.id) ?? [],
-    //     liveMode: "auto",
-    //     queryOptions: {
-    //         enabled: !!dataGridProps?.rows,
-    //     },
-    // });
 
     const columns = React.useMemo<ColumnDef<IMasterCase>[]>(
         () => [
-            {
-                accessorKey: "id",
-                header: "Id",
-            },
             {
                 accessorKey: "title",
                 header: "Title",
@@ -68,8 +26,16 @@ export default function Page() {
                 header: "Description"
             },
             {
+                accessorKey: "type",
+                header: "Type",
+            },
+            {
                 accessorKey: "status",
                 header: "Status",
+            },
+            {
+                accessorKey: "agent_message",
+                header: "Case Message",
             },
             {
                 header: "Action",
@@ -81,7 +47,6 @@ export default function Page() {
                                 icon={<TimeIcon />}
                                 aria-label="history"
                                 onClick={() => {
-                                    console.log("history")
                                     setModalID(item.row.original.id);
                                     onOpen();
                                 }}
@@ -90,7 +55,7 @@ export default function Page() {
                         ]
                     } else if (item.row.original.status === MasterCaseStatus.Reject) {
                         return [
-                            <Tooltip  label={item.row.original.agent_message}  placement="left" key={item.row.id}>
+                            <Tooltip label={item.row.original.agent_message} placement="left" key={item.row.id}>
                                 <IconButton aria-label="reject" ><WarningTwoIcon /></IconButton>
                             </Tooltip>
                         ]
@@ -115,10 +80,9 @@ export default function Page() {
                     }
                 },
             },
-        ],[]
-        // [masterCaseData?.data],
+        ], []
     );
-
+    const { data: user } = useGetIdentity<IUser>();
     const {
         getHeaderGroups,
         getRowModel,
@@ -126,60 +90,75 @@ export default function Page() {
     } = useTable({
         refineCoreProps: {
             resource: "MasterCase",
+            // filters: {
+            //     permanent: [
+            //         {
+            //             field: "is_deleted",
+            //             operator: "eq",
+            //             value: false
+            //         },
+            //         {
+            //             field: "customer_id",
+            //             operator: "eq",
+            //             value: user?.id
+            //         }
+            //     ]
+            // }
         },
         columns,
     });
+    
     return (
-        <div style={{ padding:"8px" }}>
-        <Text fontSize='3xl'>Products</Text>
-        <TableContainer whiteSpace="pre-line">
-            <Table variant="simple">
-                <Thead>
-                    {getHeaderGroups().map((headerGroup) => (
-                        <Tr key={headerGroup.id}>
-                            {headerGroup.headers.map((header) => (
-                                <Th key={header.id}>
-                                    {!header.isPlaceholder && (
-                                        <HStack spacing="2">
-                                            <Text>
-                                                {flexRender(
-                                                    header.column.columnDef
-                                                        .header,
-                                                    header.getContext(),
-                                                )}
-                                            </Text>
+        <div style={{ padding: "8px" }}>
+            <Text fontSize='3xl'>Cases</Text>
+            <TableContainer whiteSpace="pre-line">
+                <Table variant="simple">
+                    <Thead>
+                        {getHeaderGroups().map((headerGroup) => (
+                            <Tr key={headerGroup.id}>
+                                {headerGroup.headers.map((header) => (
+                                    <Th key={header.id}>
+                                        {!header.isPlaceholder && (
                                             <HStack spacing="2">
+                                                <Text>
+                                                    {flexRender(
+                                                        header.column.columnDef
+                                                            .header,
+                                                        header.getContext(),
+                                                    )}
+                                                </Text>
+                                                <HStack spacing="2">
+                                                </HStack>
                                             </HStack>
-                                        </HStack>
-                                    )}
-                                </Th>
-                            ))}
-                        </Tr>
-                    ))}
-                </Thead>
-                <Tbody>
-                    {getRowModel().rows.map((row) => (
-                        <Tr key={row.id}>
-                            {row.getVisibleCells().map((cell) => (
-                                <Td key={cell.id}>
-                                    {flexRender(
-                                        cell.column.columnDef.cell,
-                                        cell.getContext(),
-                                    )}
-                                </Td>
-                            ))}
-                        </Tr>
-                    ))}
-                </Tbody>
-            </Table>
-        </TableContainer>
-        <ModalHistory isOpen={isOpen} onClose={() => onClose()} id={modalID} />
-    </div>
+                                        )}
+                                    </Th>
+                                ))}
+                            </Tr>
+                        ))}
+                    </Thead>
+                    <Tbody>
+                        {getRowModel().rows.map((row) => (
+                            <Tr key={row.id}>
+                                {row.getVisibleCells().map((cell) => (
+                                    <Td key={cell.id}>
+                                        {flexRender(
+                                            cell.column.columnDef.cell,
+                                            cell.getContext(),
+                                        )}
+                                    </Td>
+                                ))}
+                            </Tr>
+                        ))}
+                    </Tbody>
+                </Table>
+            </TableContainer>
+            <ModalHistory isOpen={isOpen} onClose={() => onClose()} id={modalID} />
+        </div>
     );
 }
 const ModalHistory = ({ isOpen, onClose, id }: { isOpen: boolean, onClose: () => void, id: string }) => {
     // const { data: user } = useGetIdentity<IUser>();
-    const virtuosoRef = useRef<VirtuosoHandle>(null)
+    
     const style = {
         position: 'absolute' as 'absolute',
         top: '50%',
@@ -205,7 +184,7 @@ const ModalHistory = ({ isOpen, onClose, id }: { isOpen: boolean, onClose: () =>
           <ModalHeader>Modal Title</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Chat id={id} virtuosoRef={virtuosoRef} />
+            <Chat id={id} />
           </ModalBody>
 
           <ModalFooter>
@@ -215,7 +194,7 @@ const ModalHistory = ({ isOpen, onClose, id }: { isOpen: boolean, onClose: () =>
             <Button variant='ghost'>Secondary Action</Button>
           </ModalFooter>
         </ModalContent>
-           
+
         </Modal >
     )
 }
